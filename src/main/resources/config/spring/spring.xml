@@ -24,13 +24,14 @@
 	<dubbo:application name="manage_provider" />
 
 	<!-- 使用zookeeper注册中心暴露服务地址,即zookeeper的所在服务器ip地址和端口号 -->
-	<dubbo:registry address="zookeeper://192.168.20.16:2181" check="true" timeout="2000"/>
+	<dubbo:registry address="zookeeper://www.shawnshery.me:2181"
+		check="true" timeout="2000" />
 
 	<!-- 用dubbo协议在20880端口暴露服务 -->
-	<dubbo:protocol name="dubbo" port="20880" />
+	<dubbo:protocol name="dubbo" port="20881" />
 
 	<!-- 官方注释：扫描注解包路径，多个包用逗号分隔，不填pacakge表示扫描当前ApplicationContext中所有的类。 测试发现：此处package不填写包名会无法注册Service，扫描全包需填写包首即可或者填写至类的上一级目录。 -->
-	<dubbo:annotation package="com.joosure.yjj.service" />
+	<!-- <dubbo:annotation package="com.joosure.yjj.service" /> -->
 
 	<!-- 将多个配置文件读取到容器中，交给Spring管理 -->
 	<bean id="propertyConfigurer"
@@ -40,6 +41,7 @@
 				<!-- 这里支持多种寻址方式：classpath和file -->
 				<value>classpath:jdbc.properties</value>
 				<value>classpath:redis.properties</value>
+				<value>classpath:mongodb.properties</value>
 			</list>
 		</property>
 	</bean>
@@ -48,6 +50,8 @@
 
 	<import resource="spring-database.xml" />
 	<import resource="spring-redis.xml" />
+	<import resource="spring-mongodb.xml" />
+	<import resource="spring-service.xml"/>
 	<import resource="spring-dao.xml" />
 
 </beans>
