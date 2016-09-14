@@ -17,8 +17,15 @@
            				http://code.alibabatech.com/schema/dubbo          
     					http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
+	<!-- 前端业务接口 -->
 	<bean id="websiteService" class="com.joosure.yjj.service.WebsiteServiceImpl" />
-	<dubbo:service interface="com.joosure.service.api.WebsiteService" ref="websiteService"></dubbo:service>
+	<dubbo:service interface="com.joosure.service.api.WebsiteService"
+		ref="websiteService"></dubbo:service>
+
+	<!-- 管理端业务接口 -->
+	<bean id="managementService" class="com.joosure.yjj.service.ManagementServiceImpl" />
+	<dubbo:service interface="com.joosure.service.api.ManagementService"
+		ref="managementService"></dubbo:service>
 
 
 </beans>
