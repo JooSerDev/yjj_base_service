@@ -5,6 +5,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.joosure.service.api.WebsiteService;
 import com.joosure.yjj.dao.redis.WebsiteRedisDao;
 
+/**
+ * 前端API
+ * 
+ * @author shawn
+ *
+ */
 public class WebsiteServiceImpl implements WebsiteService {
 
 	@Autowired

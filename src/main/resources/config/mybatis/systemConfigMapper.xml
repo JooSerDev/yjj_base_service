@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.joosure.yjj.dao.sql.SystemConfigDao">
+
+	<select id="getAll" resultType="com.joosure.entity.pojo.SystemConfig">
+		select * from sys_config;
+	</select>
+
+	<select id="getSystemConfig" resultType="com.joosure.entity.pojo.SystemConfig">
+		select * from sys_config
+		where sysKey = #{sysKey};
+	</select>
+
+	<insert id="addSystemConfig" parameterType="com.joosure.entity.pojo.SystemConfig">
+		insert into sys_config
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			sysKey,
+			sysValue,
+			description,
+			lastModifyTime,
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			#{sysKey},
+			#{sysValue},
+			#{description},
+			now(),
+		</trim>
+	</insert>
+
+	<update id="updateSystemConfig" parameterType="com.joosure.entity.pojo.SystemConfig">
+		update sys_config
+		set sysValue = #{sysValue} , description = #{description}
+		, lastModifyTime = #{lastModifyTime} where sysKey = #{sysKey};
+	</update>
+</mapper>
